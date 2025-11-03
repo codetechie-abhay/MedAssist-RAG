@@ -1,0 +1,37 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv311/
+.env
+.venv311/
+
+# Vectorstore index files (FAISS)
+vectorstore/
+
+# Chainlit files
+.chainlit/
+
+# Backup and temporary files
+*.bak
+*.tmp
+backup/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs and debug outputs
+*.log
+*.out
+*.err
+
+# Large model files
+llama-2-7b-chat.ggmlv3.q8_0.bin
+
+# Ignore data PDFs
+data/*.pdf
