@@ -1,6 +1,6 @@
 # 🩺 Medical RAG Chatbot — Project Overview and Runbook 📚
 
-![Project Flow](./assets/projectflow.jpg)
+![Project Flow](./assest/projectflow.jpg)
 
 ### 1️⃣ What this project does
 
