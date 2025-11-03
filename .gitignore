@@ -1,3 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Environments
+venv/
+venv311/
+.env
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Chainlit cache/config (optional)
+.chainlit/
+
+# Data and vector indexes (large, regenerable)
+vectorstore/db_faiss/
+data/*.pdf
+data/*.PDF
+
+# Backups/archives
+code-backup-*.zip
 # Python cache files
 __pycache__/
 *.py[cod]
