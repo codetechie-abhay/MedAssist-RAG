@@ -3,6 +3,34 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.Python
+*.egg-info/
+
+# Virtual environments
+venv/
+venv311/
+.venv/
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Chainlit cache
+.chainlit/
+
+# Vector stores / indexes
+vectorstore/db_faiss/
+*.faiss
+*.pkl
+
+# OS files
+Thumbs.db
+.DS_Store
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 .pytest_cache/
 
 # Environments
