@@ -1,85 +1,44 @@
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
-.Python
+*.pytest_cache/
 *.egg-info/
+*$py.class
 
 # Virtual environments
 venv/
 venv311/
 .venv/
+.env
 
-# VSCode / IDE
+# IDE/Editor files
 .vscode/
 .idea/
+*.swp
 
-# Chainlit cache
+# Chainlit cache/config
 .chainlit/
 
-# Vector stores / indexes
-vectorstore/db_faiss/
+# Vector stores / indexes (large, regenerable)
+vectorstore/
 *.faiss
 *.pkl
 
-# OS files
-Thumbs.db
-.DS_Store
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.pytest_cache/
-
-# Environments
-venv/
-venv311/
-.env
-
-# Editors/OS
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Chainlit cache/config (optional)
-.chainlit/
-
-# Data and vector indexes (large, regenerable)
-vectorstore/db_faiss/
+# Data files (PDFs)
 data/*.pdf
 data/*.PDF
 
-# Backups/archives
-code-backup-*.zip
-# Python cache files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual environments
-venv311/
-.env
-.venv311/
-
-# Vectorstore index files (FAISS)
-vectorstore/
-
-# Chainlit files
-.chainlit/
+# OS files
+.DS_Store
+Thumbs.db
 
 # Backup and temporary files
 *.bak
 *.tmp
 backup/
-
-# IDE/editor files
-.vscode/
-.idea/
-*.swp
-.DS_Store
+code-backup-*.zip
 
 # Logs and debug outputs
 *.log
@@ -89,9 +48,7 @@ backup/
 # Large model files
 llama-2-7b-chat.ggmlv3.q8_0.bin
 
-# Ignore data PDFs
-data/*.pdf
-
+# Windows
 *.dll
 *.lib
 *.pdb

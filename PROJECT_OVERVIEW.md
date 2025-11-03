@@ -1,39 +1,39 @@
-
 # 🩺 Medical RAG Chatbot — Project Overview and Runbook 📚
+
+![Project Flow](./assets/projectflow.jpg)
 
 ### 1️⃣ What this project does
 
-* 💬 Retrieval-Augmented Generation (RAG) chatbot that answers **medical questions** using your local PDF corpus 📄.
-* 🚀 Two ways to use it:
-
-  * 🖥️ CLI (terminal): fast, no UI
+* 💬 Retrieval-Augmented Generation (RAG) chatbot that answers **medical questions** using your local PDF corpus 📄.  
+* 🚀 Two ways to use it:  
+  * 🖥️ CLI (terminal): fast, no UI  
   * 🌐 Chainlit UI: web interface at a local URL
 
 ### 2️⃣ Key components (files/folders)
 
-* 📂 `data/`: Put your source PDFs here
-* 🗄️ `vectorstore/db_faiss/`: FAISS vector index created from PDFs
-* 🛠️ `ingest.py`: Builds/refreshes the FAISS index from `data/`
-* 🖥️ `cli.py`: Runs full RAG pipeline from terminal
-* 🌐 `model.py`: Chainlit UI app (starts local web server)
-* 📦 `requirements.txt`: Python dependencies
-* 🐍 `venv311/`: Python 3.11 virtual environment used to run the app
+* 📂 `data/`: Put your source PDFs here  
+* 🗄️ `vectorstore/db_faiss/`: FAISS vector index created from PDFs  
+* 🛠️ `ingest.py`: Builds/refreshes the FAISS index from `data/`  
+* 🖥️ `cli.py`: Runs full RAG pipeline from terminal  
+* 🌐 `model.py`: Chainlit UI app (starts local web server)  
+* 📦 `requirements.txt`: Python dependencies  
+* 🐍 `venv311/`: Python 3.11 virtual environment used to run the app  
 
 ### 3️⃣ Models used
 
-* 📚 Embeddings: `sentence-transformers/all-MiniLM-L6-v2` (Hugging Face)
-* 🧠 Vector DB: `FAISS` (stored at `vectorstore/db_faiss/`)
-* 🤖 Generator (LLM): `TheBloke/Llama-2-7B-Chat-GGML` via `ctransformers` (CPU-friendly quantized model)
+* 📚 Embeddings: `sentence-transformers/all-MiniLM-L6-v2` (Hugging Face)  
+* 🧠 Vector DB: `FAISS` (stored at `vectorstore/db_faiss/`)  
+* 🤖 Generator (LLM): `TheBloke/Llama-2-7B-Chat-GGML` via `ctransformers` (CPU-friendly quantized model)  
 
 ### 4️⃣ End-to-end data flow
 
-1. 📄 Load documents (PDFs) from `data/`
-2. ✂️ Split docs into chunks & embed using `all-MiniLM-L6-v2`
-3. 💾 Store chunks + embeddings in FAISS vector DB
-4. 🔍 Retriever pulls top-k relevant chunks from FAISS at query time
-5. 📝 Prompt template combines retrieved context + question
-6. 🤖 LLM (ctransformers) generates concise answer
-7. 🌐 UI shows brief citations/snippets from top retrieved chunks
+1. 📄 Load documents (PDFs) from `data/`  
+2. ✂️ Split docs into chunks & embed using `all-MiniLM-L6-v2`  
+3. 💾 Store chunks + embeddings in FAISS vector DB  
+4. 🔍 Retriever pulls top-k relevant chunks from FAISS at query time  
+5. 📝 Prompt template combines retrieved context + question  
+6. 🤖 LLM (ctransformers) generates concise answer  
+7. 🌐 UI shows brief citations/snippets from top retrieved chunks  
 
 ### 5️⃣ How to run (recommended: Python 3.11 venv)
 
@@ -72,13 +72,16 @@ python cli.py "What is hypertension?"
 * ⏳ First query can take 30-90 seconds due to model loading/caching
 * 🖥️ If UI only shows welcome text, check terminal logs for `[Chainlit] Question:` and wait
 
-### 7️⃣ Prompting (what to ask)
+### 7️⃣ Prompting 
 
-* 🏥 Clinical, guideline-based questions work best. Examples:
-
-  * "KDIGO thresholds for starting SGLT2 inhibitors in CKD without diabetes?"
-  * "First-line therapy for resistant hypertension on ACEi + CCB + thiazide?"
-  * "GOLD escalation criteria after COPD exacerbations?"
+* Clinical, guideline-based questions work best. Examples:
+  * What are common symptoms of meningitis?
+  * Hi, I've had a sore throat and hoarse voice for two days. Could it be laryngitis?
+  * My grandmother suddenly can't move one side of her body — what should we do?
+  * What is the difference between acute and chronic kidney disease?
+  * I often feel burning pain in my upper stomach after meals. Is that gastritis or an ulcer?
+  * First-line therapy for resistant hypertension on ACEi + CCB + thiazide?
+  * GOLD escalation criteria after COPD exacerbations?
 
 ### 8️⃣ Rebuilding the FAISS index (optional)
 
@@ -95,19 +98,16 @@ Reads PDFs, creates embeddings, saves FAISS to `vectorstore/db_faiss/`
 ### 9️⃣ Troubleshooting
 
 * ⚠️ Port in use (error 10048):
-
   * Kill existing server or change port
   * Find PID: `netstat -ano | findstr :8012`
   * Kill: `taskkill /PID <PID> /F`
   * Or change port: `--port 8013`
 
 * 🖥️ UI shows only welcome text:
-
   * Wait for terminal logs; first request may be slow
   * Confirm running in `venv311` (Python 3.11)
 
-* 🖥️ CLI works but UI doesn’t:
-
+* 🖥️ CLI works but UI doesn't:
   * Check both use same FAISS path `vectorstore/db_faiss`
   * Confirm required packages installed in venv311
 
@@ -124,6 +124,8 @@ medical_chatbot-main/
   requirements.txt             # 📦 Dependencies
   chainlit.md                  # 📖 UI intro/help (optional)
   venv311/                     # 🐍 Python 3.11 environment (recommended)
+  assets/
+    projectflow.jpg            # 🖼️ Project flow image
 ```
 
 ### 🕒 Daily usage quickstart
@@ -132,4 +134,3 @@ medical_chatbot-main/
 2. 🚀 Start UI on free port (e.g., 8012)
 3. 💬 Ask your clinical question in UI
 4. 🔄 If UI busy, test same question via CLI
-
