@@ -1,0 +1,149 @@
+/* MedAssist-RAG Custom Theme */
+
+/* Medical-themed color palette */
+:root {
+    --primary-medical: #2E7D32;  /* Medical green */
+    --secondary-medical: #1976D2; /* Medical blue */
+    --accent-medical: #FF6B6B;    /* Medical red for alerts */
+    --success-medical: #4CAF50;   /* Success green */
+    --warning-medical: #FF9800;   /* Warning orange */
+}
+
+/* Welcome message styling */
+.chat-message {
+    border-radius: 12px;
+    padding: 20px;
+    margin: 12px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-message:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* User messages - gradient medical blue */
+.user-message {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-left: 4px solid var(--secondary-medical);
+}
+
+/* Assistant messages - medical green gradient */
+.assistant-message {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    border-left: 4px solid var(--primary-medical);
+}
+
+/* Answer formatting */
+.answer-content {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+/* Citation/Sources styling */
+.sources-element {
+    background: rgba(46, 125, 50, 0.1);
+    border: 1px solid var(--primary-medical);
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+/* Header customization */
+.header {
+    background: linear-gradient(135deg, var(--primary-medical) 0%, var(--secondary-medical) 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+button {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Input field styling */
+input, textarea {
+    border-radius: 8px;
+    border: 2px solid var(--primary-medical);
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--secondary-medical);
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+/* Response time badge */
+.response-time {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    display: inline-block;
+    margin-top: 8px;
+}
+
+/* Warning/Disclaimer styling */
+.disclaimer {
+    background: rgba(255, 152, 0, 0.1);
+    border-left: 4px solid var(--warning-medical);
+    padding: 12px;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+
+/* Smooth animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-message {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-medical);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-medical);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .chat-message {
+        padding: 16px;
+        margin: 8px 0;
+    }
+}
+

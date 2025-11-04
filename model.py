@@ -91,13 +91,18 @@ def final_result(query):
 async def start():
     chain = qa_bot()
     intro = (
-        "Welcome to Medical RAG Assistant.\n\n"
-        "Ask a clinical question (include patient context).\n"
-        "Answers include citations from your PDF corpus.\n"
-        "This is not a substitute for professional medical advice."
+        "🏥 **Welcome to MedAssist-RAG!** 🏥\n\n"
+        "✨ Your AI-powered medical assistant powered by RAG technology.\n\n"
+        "📋 **How to use:**\n"
+        "• Ask clinical questions with patient context\n"
+        "• Get evidence-based answers from your PDF corpus\n"
+        "• View citations and source references\n\n"
+        "💡 **Example questions:**\n"
+        "• \"KDIGO thresholds for starting SGLT2 inhibitors in CKD?\"\n"
+        "• \"First-line therapy for resistant hypertension?\"\n\n"
+        "⚠️ **Note:** This is not a substitute for professional medical advice."
     )
     await cl.Message(content=intro).send()
-
     cl.user_session.set("chain", chain)
 
 @cl.on_message
@@ -153,8 +158,11 @@ async def main(message: cl.Message):
         print(f"[Chainlit] Citation retrieval error: {e}")
         elements = []
 
-    footer = "\n\nNote: This information is for educational purposes and not medical advice."
-    await cl.Message(content=f"{answer}\n\n_Response time: {dt_ms} ms_{footer}", elements=elements).send()
+    footer = "\n\n⚠️ **Note:** This information is for educational purposes only and not medical advice."
+    await cl.Message(
+        content=f"**Answer:**\n\n{answer}\n\n_Response time: {dt_ms} ms_{footer}",
+        elements=elements
+    ).send()
 
 
 @cl.action_callback("example_1")

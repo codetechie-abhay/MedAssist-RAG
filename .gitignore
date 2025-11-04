@@ -18,8 +18,9 @@ venv311/
 .idea/
 *.swp
 
-# Chainlit cache/config
-.chainlit/
+# Chainlit cache/config (allow config.toml to be tracked)
+.chainlit/*
+!.chainlit/config.toml
 
 # Vector stores / indexes (large, regenerable)
 vectorstore/
